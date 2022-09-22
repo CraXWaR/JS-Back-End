@@ -1,5 +1,6 @@
 const http = require('http');
 const port = 3000;
+const handlers = require('./handlers');
 
 http.createServer((req, res) => {
     res.writeHead(200, {
@@ -8,4 +9,4 @@ http.createServer((req, res) => {
 
     res.write('Hello JS WORLD!');
     res.end();
-}).listen(port);
+}).listen(port);    
