@@ -3,10 +3,11 @@ const port = 3000;
 const handlers = require('./handlers');
 
 http.createServer((req, res) => {
-    res.writeHead(200, {
-        'Content-Type' : 'text/plain'
-    });
+    
+    for (const handler of handlers) {
+        if (!handler(req, res)) {
+            break;
+        }
+    }
 
-    res.write('Hello JS WORLD!');
-    res.end();
 }).listen(port);    
