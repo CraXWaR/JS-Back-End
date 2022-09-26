@@ -1,5 +1,5 @@
 const http = require('http');
-const fs = reuqire('fs');
+const fs = require('fs');
 const formidable = require('formidable');
 const storageService = require('./service/storageService.js');
 const port = 3000;
