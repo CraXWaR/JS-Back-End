@@ -1,9 +1,14 @@
-const env = process.env.NODE_ENV || 'development';
+const express = require('express');
+const hbs = require('express-handlebars').create({
+    extname: '.hbs'
+});
 
-const config = require('./config/config')[env];
-const app = require('express')();
+const app = express();
 
-require('./config/express')(app);
-require('./config/routes')(app);
+app.engine('.hbs', hbs.engine);
+app.set('view engine', '.hbs');
 
-app.listen(config.port, console.log(`Listening on port ${config.port}! Now its up to you...`));
+app.use(express.urlencoded({ extended: true }));
+app.use('/static', express.static('static'));
+
+app.listen(3000, () => console.log('hi listening on 3000k port'))
