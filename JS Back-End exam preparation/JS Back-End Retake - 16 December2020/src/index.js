@@ -7,12 +7,12 @@ const routesConfig = require('./config/routes');
 start();
 
 async function start() {
-    const app = express;
+    const app = express();
 
     expressConfig(app);
     await databaseConfig(app);
     routesConfig(app);
 
-    app.listen(3000, () => console.log('Server on'));
+    app.listen(3000, () => console.log('Server is working'));
     //.. config
 }
