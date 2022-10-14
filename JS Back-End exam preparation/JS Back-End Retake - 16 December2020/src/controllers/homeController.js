@@ -3,7 +3,8 @@ const homeController = require('express').Router();
 //TODO real controller
 homeController.get('/', (req, res) => {
     res.render('home', {
-        title: 'Home Page'
+        title: 'Home Page',
+        user: req.user
     });
 });
 

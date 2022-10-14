@@ -5,10 +5,10 @@ const User = require('../models/User');
 
 const JWT_SECRET = '56dsa4d6as85dsa';
 
-
+//todo username mby be email depends on task need check as username
 async function register(username, password) {
-    const exist = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
-    if (exist) {
+    const exists = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
+    if (exists) {
         throw new Error('Username is taken');
     }
 
@@ -24,9 +24,21 @@ async function register(username, password) {
     
     return token;
 }
+//todo username mby be email depends on task
+async function login(username, password) {
+    const user = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
+    if (!user) {
+        throw new Error('Wrong username or password!')
+    }
 
-async function login() {
+    const hasMatch = await bcrypt.compare(password, user.hashedPassword);
 
+    if (hasMatch == false) {
+        throw new Error('Wrong username or password!')
+    }
+
+    const token = createSession(user);
+    return token
 }
 
 function createSession({ _id, username }) {
@@ -39,8 +51,8 @@ function createSession({ _id, username }) {
     return token;
 }
 
-function verifyToken() {
-    
+function verifyToken(token) {
+    return jwt.verify(token, JWT_SECRET)
 }
 
 module.exports = {

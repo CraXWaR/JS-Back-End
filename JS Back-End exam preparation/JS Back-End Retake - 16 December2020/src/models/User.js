@@ -1,8 +1,16 @@
 const { Schema, model } = require('mongoose');
 
+
+//todo add user propertiest and validation on task
 const userSchema = new Schema({
-    username: { type: String, required: true, unique: true},
-    hashedPassword: { type: String, required: true},
+    username: { type: String, 
+        required: true, 
+        unique: true, 
+        minlength: [3, 'At least 3 char'] 
+    },
+    hashedPassword: { type: String, 
+        required: true 
+    },
 });
 
 userSchema.index({ username: 1 }, {
