@@ -1,4 +1,4 @@
-const { create } = require('../models/Hotel');
+const { create } = require('../services/hotelService');
 const { parseError } = require('../util/parser');
 
 const hotelController = require('express').Router();
