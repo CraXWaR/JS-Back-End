@@ -5,18 +5,15 @@ const URL_PATTERN = /https?:\/\/./i;
 const courseSchema = new Schema({
     title: {
         type: String,
-        required: true,
         minlength: [4, 'Course title must be at least 4 characters long']
     },
     description: {
         type: String,
-        required: true,
         minlength: [20, 'Course description must be at least 20 characters long'],
         maxlength: [50, 'Course description must be at most 50 characters long']
     },
     imageUrl: {
         type: String,
-        required: true,
         validate: {
             validator: (v) => URL_PATTERN.test(v),
             message: 'Invalid imgUrl'
@@ -24,11 +21,12 @@ const courseSchema = new Schema({
     },
     duration: {
         type: String,
-        required: true
+        required: [true, 'Duration is required']
     },
     createdAt: {
         type: String,
-        required: true
+        required: true,
+        default: () => (new Date().toISOString().slice(0, 10))
     },
     users: {
         type: [Types.ObjectId],
