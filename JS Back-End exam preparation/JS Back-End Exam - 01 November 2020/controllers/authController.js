@@ -58,7 +58,7 @@ authController.post('/login', async (req, res) => {
         const token = await login(req.body.username, req.body.password);
 
         res.cookie('token', token);
-        res.redirect('/'); //todo see if redirect 
+        res.redirect('/');
     } catch (error) {
         const errors = parseError(error);
         res.render('login', {
