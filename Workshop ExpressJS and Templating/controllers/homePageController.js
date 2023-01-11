@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
         search,
         from,
         to,
-        cubes,  
+        cubes,
     })
 });
 

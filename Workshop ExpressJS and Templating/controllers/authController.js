@@ -36,7 +36,7 @@ router.post('login', async (req, res) => {
             });
             res.redirect('/');
         } else {
-            throw new Error ('Invalid username or password!');
+            throw new Error('Invalid username or password!');
         }
     } catch (error) {
         return res.status(400).render('auth/loginPage', { error: err.message });

@@ -1,7 +1,7 @@
 const { engine } = require('express-handlebars');
 
 const initHandlebars = (app) => {
-    app.engine('hbs', engine ({
+    app.engine('hbs', engine({
         extname: 'hbs',
 
     }));

@@ -7,7 +7,7 @@ const app = express();
 const PORT = 3000;
 
 require('./config/handlebars')(app);
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/static', express.static('static'));
 app.use(cookieParser());

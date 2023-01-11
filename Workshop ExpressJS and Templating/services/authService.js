@@ -3,18 +3,18 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const registerUser = async (username, password) => {
-    await user.create({username, password});
+    await user.create({ username, password });
 
 }
 
 const checkForUser = async (username, password) => {
     try {
-        const findUser = await user.findOne({username});
+        const findUser = await user.findOne({ username });
         const isValid = await bcrypt.compare(password, findUser.password);
         if (isValid) {
             return user;
         } else {
-            throw {  message: 'Cannot find username of password' };
+            throw { message: 'Cannot find username of password' };
         }
     } catch (err) {
         console.log(err);
@@ -29,7 +29,7 @@ const createToken = (user) => {
     }
 
     return new Promise((resolve, reject) => {
-        jwt.sign(payload, 'ASDPI-93KLASJD02', function(err, token){
+        jwt.sign(payload, 'ASDPI-93KLASJD02', function (err, token) {
             if (err) {
                 reject(err);
             } else {

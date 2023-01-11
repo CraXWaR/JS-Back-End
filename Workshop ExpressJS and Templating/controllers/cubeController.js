@@ -34,13 +34,13 @@ router.get('/details/:id/edit', async (req, res) => {
     try {
         const id = req.params.id;
         const cube = await getOneCube(id);
-        if(cube._id == res.locals.user._id){
+        if (cube._id == res.locals.user._id) {
             res.render('editCubePage', { cube })
-        }else {
+        } else {
             throw new Error('You are not authorized to edit/delete this cube!')
         }
     } catch (error) {
-        res.status(401).render('404', {error: error.message})
+        res.status(401).render('404', { error: error.message })
     }
 })
 router.post('/details/:id/edit', async (req, res) => {
@@ -57,13 +57,13 @@ router.get('/details/:id/delete', async (req, res) => {
     try {
         const id = req.params.id;
         const cube = await getOneCube(id);
-        if(cube._id == res.locals.user._id){
+        if (cube._id == res.locals.user._id) {
             res.render('deleteCubePage', { cube })
-        }else {
+        } else {
             throw new Error('You are not authorized to edit/delete this cube!')
         }
     } catch (error) {
-        res.status(401).render('404', {error: error.message})
+        res.status(401).render('404', { error: error.message })
     }
 })
 router.post('/details/:id/delete', (req, res) => {

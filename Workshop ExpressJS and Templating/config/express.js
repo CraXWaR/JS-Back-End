@@ -1,13 +1,21 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
-const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('../middlewares/session');
+const trimBody = require('../controllers/trimBody');
+
 
 module.exports = (app) => {
-    
-    //TODO: Setup the view engine
+    const hbs = handlebars.create({
+        extname: '.hbs'
+    });
 
-    //TODO: Setup the body parser
+    app.engine('.hbs', hbs.engine);
+    app.set('view engine', '.hbs');
 
-    //TODO: Setup the static files
-
+    app.use('/static', express.static('static'));
+    app.use(express.urlencoded({ extended: true }));
+    app.use(cookieParser());
+    app.use(session());
+    app.use(trimBody());
 };

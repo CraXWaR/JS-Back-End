@@ -37,7 +37,7 @@ const search = async (text, from, to) => {
 
 const editCube = async (id, body) => {
     let { name, description, imageUrl, difficultyLevel } = body;
-    return cube.findByIdAndupdate(id, { name, description, imageUrl, 'difficulty': difficultyLevel});
+    return cube.findByIdAndupdate(id, { name, description, imageUrl, 'difficulty': difficultyLevel });
 
 };
 

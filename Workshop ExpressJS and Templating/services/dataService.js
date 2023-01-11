@@ -19,7 +19,7 @@ function getAll(search, from, to) {
     to = Number(to) || Number.MAX_SAFE_INTEGER;
     search = search || "";
 
-    const output = data 
+    const output = data
         .filter(c => c.name.toLowerCase().includes(search.toLowerCase()) || '')
         .filter(c => c.difficulty >= from && c.difficulty <= to);
     return output.length > 0 ? output : data;

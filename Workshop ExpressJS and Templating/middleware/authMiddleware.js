@@ -8,7 +8,7 @@ const authMiddleware = (req, res, next) => {
 
     }
 
-    jwt.verify(token, 'ASDPI-93KLASJD02', function(err, decodedToken) {
+    jwt.verify(token, 'ASDPI-93KLASJD02', function (err, decodedToken) {
         if (err) {
             res.status(401).redirect('/login');
         }
