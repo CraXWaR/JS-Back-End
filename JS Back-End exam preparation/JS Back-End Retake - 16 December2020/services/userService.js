@@ -22,10 +22,10 @@ async function register(email, username, password) {
     const user = await User.create({
         email,
         username,
-        hashedPassword 
+        hashedPassword
     });
 
-    const token = createSession(user);    
+    const token = createSession(user);
     return token;
 }
 //todo username mby be email depends on task

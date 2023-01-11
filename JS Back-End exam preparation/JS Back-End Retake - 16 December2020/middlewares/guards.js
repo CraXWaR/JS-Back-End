@@ -13,7 +13,7 @@ function isGuest() {
         if (req.user) {
             res.redirect('/'); //todo change according to task if need for redirect
         } else {
-            next(); 
+            next();
         }
     };
 }

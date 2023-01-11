@@ -53,12 +53,12 @@ authController.get('/login', (req, res) => {
 });
 
 authController.post('/login', async (req, res) => {
-   try {
+    try {
         const token = await login(req.body.email, req.body.password);
-        
+
         res.cookie('token', token);
         res.redirect('/');
-   } catch (error) {
+    } catch (error) {
         const errors = parseError(error);
         res.render('login', {
             title: 'Login Page',
@@ -67,7 +67,7 @@ authController.post('/login', async (req, res) => {
                 email: req.body.email
             }
         });
-   } 
+    }
 });
 
 authController.get('/logout', (req, res) => {
