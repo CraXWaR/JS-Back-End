@@ -27,7 +27,7 @@ courseController.get('/:id/delete', async (req, res) => {
     if (course.owner.toString() != req.user._id.toString()) {
         return res.redirect('/auth/login');
     }
-    
+
     await deleteById(req.params.id);
     res.redirect('/');
 })

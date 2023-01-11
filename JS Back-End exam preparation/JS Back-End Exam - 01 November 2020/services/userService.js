@@ -14,12 +14,12 @@ async function register(username, password) {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await User.create({
-       username,
-       hashedPassword 
+        username,
+        hashedPassword
     });
 
     const token = createSession(user);
-    
+
     return token;
 }
 

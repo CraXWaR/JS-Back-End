@@ -13,7 +13,7 @@ function isGuest() {
         if (req.user) {
             res.redirect('/');
         } else {
-            next(); 
+            next();
         }
     };
 }
